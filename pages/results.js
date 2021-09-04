@@ -12,9 +12,9 @@ export default function results() {
       </Head>
 
       <main className="">
-        <div className="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-          <div className="w-3/4 space-y-8 border rounded p-4 bg-blue-100">
-            <Logo />
+        <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+          <div className="w-3/4 space-y-8 rounded p-4">
+            <Logo size="small" />
             <UserQuestion />
             <SummaryResults />
           </div>
