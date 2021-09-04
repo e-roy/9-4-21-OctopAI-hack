@@ -15,7 +15,7 @@ export default function UserQuestionInput() {
         <input
           type="text"
           placeholder="Enter you interview question here"
-          className="w-full py-2 px-4 bg-transparent placeholder-white outline-none"
+          className="w-full py-2 px-4 bg-transparent placeholder-gray-300 outline-none"
         />
       </div>
     </div>
