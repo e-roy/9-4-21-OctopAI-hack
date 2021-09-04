@@ -4,7 +4,7 @@ const openai = new OpenAI(process.env.OPENAI_API_KEY);
 export default async (req, res) => {
   console.log(req.body.name);
 
-  let prompt = `Artist: ${req.search}\n\nLyrics:\n`;
+  let prompt = req.body.name;
   const gptResponse = await openai.complete({
     engine: "davinci",
     prompt: prompt,
@@ -19,14 +19,3 @@ export default async (req, res) => {
 
   res.status(200).json({ text: `${gptResponse.data.choices[0].text}` });
 };
-
-// const spawn = require("child_process").spawn;
-
-// const process = spawn("python", [
-//   "./gpt_sql.py",
-//   "Display the lowest salary from the Worker table",
-// ]);
-
-// process.stdout.on("data", (data) => {
-//   console.log(data.toString());
-// });

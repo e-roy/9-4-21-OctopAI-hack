@@ -8,7 +8,7 @@ export default function Example() {
   const sendMessage = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const res = await fetch(`/api/openai-python`, {
+    const res = await fetch(`/api/openai2`, {
       body: JSON.stringify({
         name: query,
       }),
