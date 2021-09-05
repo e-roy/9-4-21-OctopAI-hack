@@ -1,5 +1,5 @@
 import Head from "next/head";
-// import InputBox from "./components/InputBox";
+import InputBox from "./components/InputBox";
 import Logo from "./components/Logo";
 import UserQuestionInput from "./components/UserQuestionInput";
 import UploadText from "./components/UploadText";
@@ -23,7 +23,7 @@ export default function Home() {
             <ProcessData />
           </div>
         </div>
-        {/* <InputBox /> */}
+        <InputBox />
       </main>
     </div>
   );

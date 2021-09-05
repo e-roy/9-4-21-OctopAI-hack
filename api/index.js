@@ -14,3 +14,18 @@ app.get("/api/item/:slug", (req, res) => {
 });
 
 module.exports = app;
+
+// Start the server on port 3000
+app.listen(3001, "127.0.0.1");
+console.log("Node server running on port 3001");
+
+const spawn = require("child_process").spawn;
+
+const process = spawn("python", [
+  "./gpt_sql.py",
+  "Display the lowest salary from the Worker table",
+]);
+
+process.stdout.on("data", (data) => {
+  console.log(data.toString());
+});
