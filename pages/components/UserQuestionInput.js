@@ -1,6 +1,16 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setUserQuestion } from "../../store/userInputSlice";
 
 export default function UserQuestionInput() {
+  const [question, setQuestion] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setUserQuestion(question));
+  }, [question]);
+
   return (
     <div className="">
       <div className="flex">
@@ -11,13 +21,25 @@ export default function UserQuestionInput() {
           Add Your User Interview Question.
         </div>
       </div>
-      <div className="border border-main rounded-lg ml-12 bg-main text-white my-2">
-        <input
-          type="text"
-          placeholder="Enter you interview question here"
-          className="w-full py-2 px-4 bg-transparent placeholder-gray-300 outline-none"
-        />
-      </div>
+      {question === "" ? (
+        <div className="border border-main rounded-lg ml-12 bg-main text-white my-2">
+          <input
+            type="text"
+            placeholder="Enter you interview question here"
+            className="w-full py-2 px-4 bg-transparent placeholder-gray-300 outline-none"
+            onChange={(event) => setQuestion(event.target.value)}
+          />
+        </div>
+      ) : (
+        <div className="border border-main rounded-lg ml-12 bg-sub text-gray-900 font-bold my-2">
+          <input
+            type="text"
+            placeholder="Enter you interview question here"
+            className="w-full py-2 px-4 bg-transparent placeholder-gray-300 outline-none"
+            onChange={(event) => setQuestion(event.target.value)}
+          />
+        </div>
+      )}
     </div>
   );
 }

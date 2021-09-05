@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 export default function ProcessData() {
   return (
@@ -8,14 +9,19 @@ export default function ProcessData() {
           3
         </div>
         <div className="p-2 mx-2 font-bold text-gray-700">
+          Awesome! Now, it's time to process your data.
+        </div>
+        {/* <div className="p-2 mx-2 font-bold text-gray-700">
           Awesome! Your file has succesfully uploaded. Now, it's time to process
           your data.
-        </div>
+        </div> */}
       </div>
       <div className="ml-12 flex my-2">
-        <button className="py-1 px-4 bg-main text-white rounded-xl">
-          Process Data
-        </button>
+        <Link href="/results">
+          <button className="py-1 px-4 bg-main text-white rounded-xl">
+            Process Data
+          </button>
+        </Link>
       </div>
     </div>
   );

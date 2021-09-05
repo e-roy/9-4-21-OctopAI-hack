@@ -1,15 +1,24 @@
 import Head from "next/head";
-import InputBox from "./components/InputBox";
+// import InputBox from "./components/InputBox";
 import Logo from "./components/Logo";
 import UserQuestionInput from "./components/UserQuestionInput";
 import UploadText from "./components/UploadText";
 import ProcessData from "./components/ProcessData";
+import { useSelector } from "react-redux";
+import {
+  selectUserQuestion,
+  selectUserTranscript,
+} from "../store/userInputSlice";
 
 export default function Home() {
+  const userQuestion = useSelector(selectUserQuestion);
+  const userTranscript = useSelector(selectUserTranscript);
+  console.log(userQuestion);
+
   return (
     <div className="">
       <Head>
-        <title>GPT-3 App</title>
+        <title>OctopAI</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -19,11 +28,18 @@ export default function Home() {
             <Logo size="large" />
             <UserQuestionInput />
             <UploadText />
-
-            <ProcessData />
+            {userQuestion !== "" ? (
+              <div>
+                {userQuestion} {userTranscript}
+                <ProcessData />
+              </div>
+            ) : (
+              <div>Empty</div>
+            )}
+            {/* <ProcessData /> */}
           </div>
         </div>
-        <InputBox />
+        {/* <InputBox /> */}
       </main>
     </div>
   );

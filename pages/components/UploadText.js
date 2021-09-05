@@ -1,6 +1,15 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setUserTranscript } from "../../store/userInputSlice";
 
 export default function UploadText() {
+  const [transcript, setTranscript] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setUserTranscript(transcript));
+  }, [transcript]);
   return (
     <div className="">
       <div className="flex">
@@ -12,7 +21,27 @@ export default function UploadText() {
         </div>
       </div>
       <div className="ml-12 flex my-2">
-        <button className="flex py-1 px-4 bg-main text-white rounded-xl">
+        {transcript === "" ? (
+          <div className="border border-main rounded-lg bg-main text-white my-2 w-full p-2">
+            <textarea
+              className="w-full h-full border border-main rounded-lg bg-main placeholder-gray-300 resize-none outline-none"
+              rows="14"
+              placeholder="Paste Transcript Here"
+              onChange={(event) => setTranscript(event.target.value)}
+            />
+          </div>
+        ) : (
+          <div className="border border-main rounded-lg bg-sub text-gray-900 my-2 w-full p-2">
+            <textarea
+              className="w-full h-full border border-sub rounded-lg bg-sub placeholder-gray-300 resize-none outline-none"
+              rows="14"
+              placeholder="Paste Transcript Here"
+              onChange={(event) => setTranscript(event.target.value)}
+            />
+          </div>
+        )}
+
+        {/* <button className="flex py-1 px-4 bg-main text-white rounded-xl">
           Upload
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +62,7 @@ export default function UploadText() {
         </button>
         <div className="text-sm text-gray-700 ml-8 py-1">
           Note: Accepted formates are .txt, .pdf, .mp4
-        </div>
+        </div> */}
       </div>
     </div>
   );

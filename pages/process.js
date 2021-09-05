@@ -5,7 +5,7 @@ export default function process() {
   return (
     <div className="">
       <Head>
-        <title>GPT-3 App</title>
+        <title>OctopAI</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
